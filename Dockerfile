@@ -54,3 +54,6 @@ RUN mkdir -p /work/swtpm && \
     tar --strip-components 1 -xf /work/${SWTPM_FILENAME} && \
     /opt/build-package.sh
 
+RUN cd /work && \
+    sha256sum *.deb
+
