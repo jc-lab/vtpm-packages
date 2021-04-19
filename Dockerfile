@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian:10.8
 MAINTAINER Joseph Lee <joseph@jc-lab.net>
 
 ARG DEBIAN_FRONTEND=noninteractive
