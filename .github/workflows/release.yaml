@@ -1,0 +1,19 @@
+name: Release
+on: push
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build --tag=project:current .
+      - run: mkdir -p /tmp/output && docker run --rm -it -v /tmp/output:/mnt/output project:current 'cp /work/*.deb /mnt/output/'
+      - run: cd /tmp/output && ls -al && sha256sum *.deb
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: |
+            /work/*.deb
+
