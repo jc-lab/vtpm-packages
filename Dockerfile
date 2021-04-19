@@ -7,7 +7,7 @@ RUN apt-get update -y && \
     apt-get install -y \
     bash curl wget gnupg2 \
     build-essential \
-    automake expect gnutls-bin libgnutls28-dev git gawk m4 socat fuse libfuse-dev checkinstall tpm-tools libgmp-dev libtool libglib2.0-dev libnspr4-dev libnss3-dev libssl-dev libtasn1-6-dev net-tools libseccomp-dev \
+    automake expect gnutls-bin libgnutls28-dev git gawk m4 socat fuse libfuse-dev tpm-tools libgmp-dev libtool libglib2.0-dev libnspr4-dev libnss3-dev libssl-dev libtasn1-6-dev net-tools libseccomp-dev \
     debhelper dh-exec softhsm2 \
     python3-setuptools python3-pip python3-cryptography python3-twisted
 
