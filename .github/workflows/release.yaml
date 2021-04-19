@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: docker build --tag=project:current .
       - run: mkdir -p output && docker run --rm -v $PWD/output:/mnt/output project:current sh -c "cp /work/*.deb /mnt/output/"
-      - run: cd /tmp/output && ls -al && sha256sum *.deb
+      - run: cd output && ls -al && sha256sum *.deb
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
