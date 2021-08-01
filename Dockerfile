@@ -1,4 +1,5 @@
-FROM debian:10.8
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 MAINTAINER Joseph Lee <joseph@jc-lab.net>
 
 ARG DEBIAN_FRONTEND=noninteractive
