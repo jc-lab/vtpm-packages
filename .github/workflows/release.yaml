@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker build --build-arg BASE_IMAGE=${{ matrix.base-image }} --tag=temp/${{ matrix.base-image }} .
-      - run: mkdir -p output && docker run --rm -v $PWD/output:/mnt/output project:current sh -c "cp /work/*.deb /mnt/output/"
+      - run: mkdir -p output && docker run --rm -v $PWD/output:/mnt/output temp/${{ matrix.base-image }} sh -c "cp /work/*.deb /mnt/output/"
       - name: Rename
         run: cd output && (export prefix_name=$(echo "${{ matrix.base-image }}" | sed -e 's/:/_/g') && for name in $(ls *.deb); do mv "$name" "${{ matrix.base-image }}-$name"; done)
       - run: cd output && ls -al && sha256sum *.deb
